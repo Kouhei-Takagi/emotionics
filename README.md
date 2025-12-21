@@ -45,12 +45,13 @@ Example output:
 ⚠️ Emotionics does not ship API keys, models, or hosted services.
 All LLM usage is explicitly controlled by the user.
 
-Installation
+## Installation
+Install the released Lite version from PyPI:
 ```bash
-pip install .
+pip install emotionics
 ```
-Note: Editable install (pip install -e .) may not work reliably on Python 3.13.
-A normal install is recommended during development.
+Note: This repository is not intended for editable installs (pip install -e .).
+Please use the PyPI package for standard installation and evaluation.
 
 ## What Emotionics Does
 Emotionics provides:
