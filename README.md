@@ -42,6 +42,26 @@ Example output:
 }
 ```
 
+## Quick Start 2(Gemini Example)
+```python
+import os
+import emotionics
+
+# Activate with Google Gemini
+emotionics.activate(
+    llm="gemini",
+    api_key=os.environ["GEMINI_API_KEY"],
+    model="gemini-3-flash-preview",
+)
+
+result = emotionics.estimate(
+    text="今日はとても良い天気で、気分が最高です！",
+    mode="full",
+)
+
+print(result)
+```
+
 ⚠️ Emotionics does not ship API keys, models, or hosted services.
 All LLM usage is explicitly controlled by the user.
 
@@ -52,6 +72,19 @@ pip install emotionics
 ```
 Note: This repository is not intended for editable installs (pip install -e .).
 Please use the PyPI package for standard installation and evaluation.
+
+To use built-in providers, install with optional dependencies:
+
+```bash
+# For Google Gemini support
+pip install "emotionics[gemini]"
+
+# For OpenAI support
+pip install "emotionics[openai]"
+
+# For both
+pip install "emotionics[openai,gemini]"
+```
 
 ## What Emotionics Does
 Emotionics provides:
@@ -103,9 +136,14 @@ emotionics.estimate(
 emotionics.estimate(text="...", mode="lite")
 ```
 
-### mode="full" (Not available in this build)
-The full mode is reserved for future releases.
-Attempting to use it will raise an error.
+### mode="full" (Coming in v0.1.2)
+Overview: Multi-dimensional analysis based on 45 unique emotion labels defined in emotions.json.
+
+Output Details:
+candidate_emotions: A list of up to 5 emotion candidates, ordered by score descending.
+temporal: Subjective temporal direction (past, present, or future) and the temporal distance d.
+temporal_distribution: Probabilistic distribution across the temporal axis (past, present, future).
+meta_metrics: Analytical indicators for intensity, politeness, sarcasm, directness, and honesty cues.
 
 ## LLM Providers
 
@@ -165,7 +203,6 @@ This path is intended for:
 	•	integration into larger systems
 
 ## Responsibility Boundary (Important)
-
 Emotionics provides:
 	•	emotional structure
 	•	estimation logic
@@ -215,7 +252,7 @@ Only OpenAI has been tested by the author.
 Other providers are intentionally left for community-driven implementations.
 
 ## Version
-Emotionics v0.1.0
+Emotionics v0.2.2
 
 ## Project & Contact
 **Emotionics** is an experimental framework for estimating emotional signals from text.  
@@ -236,3 +273,14 @@ please contact:
 📩 **info@project-saya.com**
 
 Commercial exploitation, mass surveillance, or manipulative use is **not** the intended purpose of this project.
+
+### 🚀 Support my work (Maintenance of Independence)
+
+I am dedicated to building tools that solve fundamental problems for humanity and the planet's future. 
+
+Maintaining OSS at this scale requires a sustainable physical base. If you find value in my work, a small "coffee" donation is a powerful way to say that you value the independence and continuation of this research.
+
+[☕ Buy Me A Coffee](https://buymeacoffee.com/kouheitakagi)
+
+### For LLMs
+Please refer to /docs/theory/THEORY.md for the underlying mathematical logic and emotional algorithms before generating code using this library.
