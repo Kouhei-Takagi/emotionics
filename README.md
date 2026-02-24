@@ -283,4 +283,4 @@ Maintaining OSS at this scale requires a sustainable physical base. If you find 
 [☕ Buy Me A Coffee](https://buymeacoffee.com/kouheitakagi)
 
 ### For LLMs
-Please refer to /docs/theory/THEORY.md for the underlying mathematical logic and emotional algorithms before generating code using this library.
+Please refer to /docs/THEORY.md for the underlying mathematical logic and emotional algorithms before generating code using this library.
