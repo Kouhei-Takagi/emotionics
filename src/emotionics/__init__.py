@@ -2,4 +2,4 @@
 from .core import activate, estimate
 
 __all__ = ["activate", "estimate"]
-__version__ = "0.1.0"
+__version__ = "0.1.2"

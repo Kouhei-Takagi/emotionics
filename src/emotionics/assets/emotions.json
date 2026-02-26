@@ -1,0 +1,1921 @@
+{
+  "version": "4.0",
+  "emotions": [
+    {
+      "name": "Comfortable",
+      "axes": {
+        "content": "positive",
+        "temporal": [
+          "present"
+        ],
+        "reactivity": [
+          "passive",
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "present"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Frustration"
+        ],
+        "neighbors": [
+          "Confident",
+          "Joy",
+          "Relief"
+        ],
+        "synonyms": [
+          "calm",
+          "relaxed",
+          "untroubled"
+        ]
+      }
+    },
+    {
+      "name": "Confident",
+      "axes": {
+        "content": "positive",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active",
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Insecurity"
+        ],
+        "neighbors": [
+          "Comfortable",
+          "Anticipation",
+          "Relief"
+        ],
+        "synonyms": [
+          "self-assured",
+          "certain",
+          "assured",
+          "secure",
+          "optimistic",
+          "empowered",
+          "poised"
+        ]
+      }
+    },
+    {
+      "name": "Anticipation",
+      "axes": {
+        "content": "positive",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active",
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Impatience"
+        ],
+        "neighbors": [
+          "Confident",
+          "Satisfied"
+        ],
+        "synonyms": [
+          "expectation",
+          "looking forward",
+          "eagerness",
+          "readiness",
+          "suspense",
+          "foreseeing",
+          "hopeful waiting",
+          "premonitory interest"
+        ]
+      }
+    },
+    {
+      "name": "Delight",
+      "axes": {
+        "content": "positive",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Disappointment"
+        ],
+        "neighbors": [
+          "Anticipation",
+          "Curiosity"
+        ],
+        "synonyms": [
+          "pleasantly surprised",
+          "delightedly shocked",
+          "positively astonished",
+          "impressed",
+          "uplifted unexpectedly",
+          "taken by pleasant surprise",
+          "wowed",
+          "unexpectedly pleased"
+        ]
+      }
+    },
+    {
+      "name": "Disappointment",
+      "axes": {
+        "content": "negative",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Delight"
+        ],
+        "neighbors": [
+          "Impatience",
+          "Confused"
+        ],
+        "synonyms": [
+          "disappointedly shocked",
+          "negatively astonished",
+          "let down",
+          "dismayed",
+          "unexpectedly upset",
+          "blindsided"
+        ]
+      }
+    },
+    {
+      "name": "Impatience",
+      "axes": {
+        "content": "negative",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active",
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Anticipation"
+        ],
+        "neighbors": [
+          "Anxiety",
+          "Insecurity"
+        ],
+        "synonyms": [
+          "restlessness",
+          "irritability",
+          "agitation",
+          "fidgety"
+        ]
+      }
+    },
+    {
+      "name": "Insecurity",
+      "axes": {
+        "content": "negative",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active",
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Confident"
+        ],
+        "neighbors": [
+          "Impatience",
+          "Sadness",
+          "Frustration"
+        ],
+        "synonyms": [
+          "self-doubt",
+          "uncertainty",
+          "vulnerability",
+          "fragility",
+          "unease",
+          "shakiness"
+        ]
+      }
+    },
+    {
+      "name": "Frustration",
+      "axes": {
+        "content": "negative",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Comfortable"
+        ],
+        "neighbors": [
+          "Insecurity",
+          "Sadness",
+          "Anger"
+        ],
+        "synonyms": [
+          "uneasy",
+          "unsettled",
+          "awkward",
+          "troubled",
+          "tense",
+          "bothered",
+          "uncomfortable",
+          "discomfort"
+        ]
+      }
+    },
+    {
+      "name": "Joy",
+      "axes": {
+        "content": "positive",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active",
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Anger"
+        ],
+        "neighbors": [
+          "Comfortable",
+          "Relief"
+        ],
+        "synonyms": [
+          "happiness",
+          "gladness",
+          "elation",
+          "cheerfulness",
+          "bliss"
+        ]
+      }
+    },
+    {
+      "name": "Relief",
+      "axes": {
+        "content": "positive",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "passive",
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Sadness"
+        ],
+        "neighbors": [
+          "Joy",
+          "Confident",
+          "Satisfied"
+        ],
+        "synonyms": [
+          "easing",
+          "reassurance",
+          "release",
+          "unburdening",
+          "comfort",
+          "reprieve"
+        ]
+      }
+    },
+    {
+      "name": "Satisfied",
+      "axes": {
+        "content": "positive",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "passive",
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Anxiety"
+        ],
+        "neighbors": [
+          "Relief",
+          "Anticipation",
+          "Curiosity",
+          "Pleasure"
+        ],
+        "synonyms": [
+          "fulfilled",
+          "gratified",
+          "at ease",
+          "pleased",
+          "settled",
+          "contentment"
+        ]
+      }
+    },
+    {
+      "name": "Curiosity",
+      "axes": {
+        "content": "positive",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active",
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Confused"
+        ],
+        "neighbors": [
+          "Satisfied",
+          "Hope",
+          "Delight"
+        ],
+        "synonyms": [
+          "interest",
+          "inquisitiveness",
+          "wonder",
+          "intrigue",
+          "questioning",
+          "eager interest"
+        ]
+      }
+    },
+    {
+      "name": "Confused",
+      "axes": {
+        "content": "negative",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active",
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Curiosity"
+        ],
+        "neighbors": [
+          "Anxiety",
+          "Despair",
+          "Disappointment"
+        ],
+        "synonyms": [
+          "puzzled",
+          "uncertain",
+          "perplexed",
+          "disoriented",
+          "mixed-up",
+          "lost"
+        ]
+      }
+    },
+    {
+      "name": "Anxiety",
+      "axes": {
+        "content": "negative",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active",
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Satisfied"
+        ],
+        "neighbors": [
+          "Confused",
+          "Impatience",
+          "Sadness"
+        ],
+        "synonyms": [
+          "worry",
+          "nervousness",
+          "unease",
+          "apprehension",
+          "dread",
+          "tension",
+          "concern"
+        ]
+      }
+    },
+    {
+      "name": "Sadness",
+      "axes": {
+        "content": "negative",
+        "temporal": [
+          "past",
+          "present"
+        ],
+        "reactivity": [
+          "active",
+          "neutral",
+          "passive"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Relief"
+        ],
+        "neighbors": [
+          "Insecurity",
+          "Anxiety",
+          "Shame",
+          "Anger"
+        ],
+        "synonyms": [
+          "sorrow",
+          "unhappiness",
+          "grief",
+          "melancholy",
+          "downheartedness",
+          "gloom"
+        ]
+      }
+    },
+    {
+      "name": "Anger",
+      "axes": {
+        "content": "negative",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Joy"
+        ],
+        "neighbors": [
+          "Sadness",
+          "Frustration",
+          "Fear"
+        ],
+        "synonyms": [
+          "rage",
+          "irritation",
+          "fury",
+          "resentment",
+          "outrage",
+          "wrath"
+        ]
+      }
+    },
+    {
+      "name": "Grateful",
+      "axes": {
+        "content": "positive",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "passive",
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Fear"
+        ],
+        "neighbors": [
+          "Joy",
+          "Relief"
+        ],
+        "synonyms": [
+          "thankful",
+          "appreciative",
+          "obliged",
+          "touched",
+          "indebted"
+        ]
+      }
+    },
+    {
+      "name": "Pride",
+      "axes": {
+        "content": "positive",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Shame"
+        ],
+        "neighbors": [
+          "Relief"
+        ],
+        "synonyms": [
+          "self-respect",
+          "dignity",
+          "honor",
+          "satisfaction",
+          "self-worth"
+        ]
+      }
+    },
+    {
+      "name": "Pleasure",
+      "axes": {
+        "content": "positive",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active",
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Guilt"
+        ],
+        "neighbors": [
+          "Satisfied"
+        ],
+        "synonyms": [
+          "enjoyment",
+          "amusement",
+          "savoring",
+          "gratification"
+        ]
+      }
+    },
+    {
+      "name": "Hope",
+      "axes": {
+        "content": "positive",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Despair"
+        ],
+        "neighbors": [
+          "Pleasure",
+          "Curiosity"
+        ],
+        "synonyms": [
+          "optimism",
+          "expectancy",
+          "aspiration",
+          "looking forward",
+          "faith"
+        ]
+      }
+    },
+    {
+      "name": "Despair",
+      "axes": {
+        "content": "negative",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "passive"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Hope"
+        ],
+        "neighbors": [
+          "Guilt",
+          "Confused"
+        ],
+        "synonyms": [
+          "hopelessness",
+          "misery",
+          "collapse",
+          "helplessness",
+          "despondency"
+        ]
+      }
+    },
+    {
+      "name": "Guilt",
+      "axes": {
+        "content": "negative",
+        "temporal": [
+          "past",
+          "present"
+        ],
+        "reactivity": [
+          "active"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Pleasure"
+        ],
+        "neighbors": [
+          "Despair",
+          "Shame",
+          "Sadness",
+          "Anxiety"
+        ],
+        "synonyms": [
+          "remorse",
+          "regretfulness",
+          "self-blame",
+          "contrition",
+          "shamefulness"
+        ]
+      }
+    },
+    {
+      "name": "Shame",
+      "axes": {
+        "content": "negative",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Pride"
+        ],
+        "neighbors": [
+          "Guilt",
+          "Anger",
+          "Fear",
+          "Sadness"
+        ],
+        "synonyms": [
+          "embarrassment",
+          "humiliation",
+          "disgrace",
+          "mortification"
+        ]
+      }
+    },
+    {
+      "name": "Fear",
+      "axes": {
+        "content": "negative",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Grateful"
+        ],
+        "neighbors": [
+          "Anger",
+          "Shame",
+          "Sadness"
+        ],
+        "synonyms": [
+          "fright",
+          "terror",
+          "alarm",
+          "unease",
+          "panic"
+        ]
+      }
+    },
+    {
+      "name": "Determination",
+      "axes": {
+        "content": "positive",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Resignation"
+        ],
+        "neighbors": [
+          "Credulous"
+        ],
+        "synonyms": [
+          "resolve",
+          "commitment",
+          "purposefulness",
+          "drive",
+          "tenacity"
+        ]
+      }
+    },
+    {
+      "name": "Credulous",
+      "axes": {
+        "content": "positive",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Dismissive"
+        ],
+        "neighbors": [
+          "Determination",
+          "Love"
+        ],
+        "synonyms": [
+          "gullible",
+          "trusting",
+          "naively believing",
+          "unskeptical",
+          "easily convinced"
+        ]
+      }
+    },
+    {
+      "name": "Love",
+      "axes": {
+        "content": "positive",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Regret"
+        ],
+        "neighbors": [
+          "Credulous",
+          "Serenity"
+        ],
+        "synonyms": [
+          "affection",
+          "devotion",
+          "fondness",
+          "attachment",
+          "caring"
+        ]
+      }
+    },
+    {
+      "name": "Serenity",
+      "axes": {
+        "content": "positive",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "passive",
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Jealousy"
+        ],
+        "neighbors": [
+          "Hope",
+          "Love"
+        ],
+        "synonyms": [
+          "calmness",
+          "peacefulness",
+          "tranquility",
+          "composure",
+          "equanimity"
+        ]
+      }
+    },
+    {
+      "name": "Jealousy",
+      "axes": {
+        "content": "negative",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Serenity"
+        ],
+        "neighbors": [
+          "Despair",
+          "Regret"
+        ],
+        "synonyms": [
+          "envy",
+          "possessiveness",
+          "covetousness",
+          "rivalrous feeling"
+        ]
+      }
+    },
+    {
+      "name": "Regret",
+      "axes": {
+        "content": "negative",
+        "temporal": [
+          "past"
+        ],
+        "reactivity": [
+          "active"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Love"
+        ],
+        "neighbors": [
+          "Guilt",
+          "Jealousy",
+          "Dismissive"
+        ],
+        "synonyms": [
+          "lament",
+          "second thoughts",
+          "contrition",
+          "sorrow for action"
+        ]
+      }
+    },
+    {
+      "name": "Dismissive",
+      "axes": {
+        "content": "negative",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Credulous"
+        ],
+        "neighbors": [
+          "Shame",
+          "Regret",
+          "Resignation"
+        ],
+        "synonyms": [
+          "disregarding",
+          "rejecting",
+          "scornful",
+          "derisive",
+          "brushing off"
+        ]
+      }
+    },
+    {
+      "name": "Resignation",
+      "axes": {
+        "content": "negative",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active",
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Determination"
+        ],
+        "neighbors": [
+          "Dismissive"
+        ],
+        "synonyms": [
+          "giving up",
+          "acceptance",
+          "submission",
+          "yielding",
+          "defeatism"
+        ]
+      }
+    },
+    {
+      "name": "Contempt",
+      "axes": {
+        "content": "negative",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "passive",
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Admiration"
+        ],
+        "neighbors": [
+          "Disgust",
+          "Anger",
+          "Criticism"
+        ],
+        "synonyms": [
+          "scorn",
+          "disdain",
+          "derision",
+          "contemptuousness",
+          "mocking"
+        ]
+      }
+    },
+    {
+      "name": "Disgust",
+      "axes": {
+        "content": "negative",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "passive",
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Admiration"
+        ],
+        "neighbors": [
+          "Fear",
+          "Anger",
+          "Contempt"
+        ],
+        "synonyms": [
+          "revulsion",
+          "aversion",
+          "nausea",
+          "loathing",
+          "repulsion"
+        ]
+      }
+    },
+    {
+      "name": "Inspiration",
+      "axes": {
+        "content": "positive",
+        "temporal": [
+          "present"
+        ],
+        "reactivity": [
+          "active"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "present"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Confused"
+        ],
+        "neighbors": [
+          "Hope",
+          "Joy",
+          "Admiration"
+        ],
+        "synonyms": [
+          "motivation",
+          "encouragement",
+          "uplift",
+          "stimulus",
+          "spark"
+        ]
+      }
+    },
+    {
+      "name": "Nostalgic",
+      "axes": {
+        "content": "neutral",
+        "temporal": [
+          "past"
+        ],
+        "reactivity": [
+          "passive",
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [],
+        "neighbors": [
+          "Sadness",
+          "Love"
+        ],
+        "synonyms": [
+          "nostalgia",
+          "longing",
+          "yearning",
+          "sentimentality",
+          "reminiscence"
+        ]
+      }
+    },
+    {
+      "name": "Criticism",
+      "axes": {
+        "content": "negative",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "passive",
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [],
+        "neighbors": [
+          "Contempt",
+          "Anger"
+        ],
+        "synonyms": [
+          "disapproval",
+          "critique",
+          "fault-finding",
+          "rebuke",
+          "assessment"
+        ]
+      }
+    },
+    {
+      "name": "Admiration",
+      "axes": {
+        "content": "positive",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Contempt"
+        ],
+        "neighbors": [
+          "Inspiration"
+        ],
+        "synonyms": [
+          "praise",
+          "esteem",
+          "regard",
+          "appreciation",
+          "veneration",
+          "admiring"
+        ]
+      }
+    },
+    {
+      "name": "Concern",
+      "axes": {
+        "content": "negative",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "passive",
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [],
+        "neighbors": [
+          "Anxiety"
+        ],
+        "synonyms": [
+          "care",
+          "preoccupation",
+          "trouble",
+          "distress",
+          "uneasiness",
+          "misgiving"
+        ]
+      }
+    },
+    {
+      "name": "Amusement",
+      "axes": {
+        "content": "positive",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [],
+        "neighbors": [],
+        "synonyms": [
+          "humor",
+          "funny",
+          "playful",
+          "joking",
+          "amused",
+          "whimsical",
+          "playfulness",
+          "wit",
+          "absurdity"
+        ]
+      }
+    },
+    {
+      "name": "Courage",
+      "axes": {
+        "content": "positive",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Fear"
+        ],
+        "neighbors": [
+          "Determination",
+          "Hope",
+          "Pride"
+        ],
+        "synonyms": [
+          "bravery",
+          "valor",
+          "fearlessness",
+          "boldness",
+          "audacity",
+          "fortitude"
+        ]
+      }
+    },
+    {
+      "name": "Contentment",
+      "axes": {
+        "content": "positive",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "passive",
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [
+          "Anxiety"
+        ],
+        "neighbors": [],
+        "synonyms": [
+          "tranquility",
+          "ease",
+          "well-being",
+          "fulfillment",
+          "relaxation",
+          "at-ease",
+          "composure",
+          "settled",
+          "satisfaction",
+          "calmness",
+          "peacefulness"
+        ]
+      }
+    },
+    {
+      "name": "Unclassified",
+      "axes": {
+        "content": "neutral",
+        "temporal": [
+          "past",
+          "present",
+          "future"
+        ],
+        "reactivity": [
+          "active",
+          "passive",
+          "neutral"
+        ],
+        "temporal_model": {
+          "t0_origin": "present",
+          "allowed_directions": [
+            "past",
+            "present",
+            "future"
+          ],
+          "distance": {
+            "name": "d",
+            "definition": "|t1 - t0|",
+            "scale": "normalized_0_1"
+          }
+        }
+      },
+      "relations": {
+        "opposite": [],
+        "neighbors": [],
+        "synonyms": [
+          "unknown",
+          "other",
+          "misc",
+          "undefined",
+          "not_sure",
+          "unrecognizable",
+          "ambiguous",
+          "mixed"
+        ]
+      }
+    }
+  ],
+  "axis_spec": {
+    "content_axis": {
+      "values": [
+        "positive",
+        "negative",
+        "neutral"
+      ],
+      "note": "Valence/content category for EmotionElement (E)."
+    },
+    "temporal_axis": {
+      "t0_origin_fixed": "present",
+      "direction_values": [
+        "past",
+        "present",
+        "future"
+      ],
+      "distance": {
+        "name": "d",
+        "definition": "|t1 - t0|",
+        "scale": "normalized_0_1",
+        "note": "0.0 means t1 collapsed to t0 (distance zero)."
+      },
+      "core_hypothesis": "EmotionState = g(E, direction(t1), d)"
+    },
+    "reactivity_axis": {
+      "values": [
+        "active",
+        "passive",
+        "neutral"
+      ],
+      "note": "How easily the emotion tends to activate/react."
+    }
+  }
+}

@@ -5,9 +5,10 @@ from typing import Any, Dict, Literal, Optional, Protocol
 
 from .errors import EmotionicsError, NotActivatedError, InvalidModeError,  ValidationError
 from .lite import analyze_lite
+from .full import analyze_full
 
 Mode = Literal["lite", "full"]
-LLMName = Literal["openai"]  # for now
+LLMName = Literal["openai", "gemini"]  # for now
 
 class LLMProvider(Protocol):
     def generate(self, *, prompt: str, model: str, **kwargs: Any) -> str: ...
@@ -50,7 +51,7 @@ def activate(
 
     # Factory path
     if provider is None and llm is not None:
-        if llm != "openai":
+        if llm not in ["openai", "gemini"]:
             raise ValidationError(
                 f"Unsupported llm: {llm!r}",
                 hint="Currently supported: 'openai'",
@@ -59,16 +60,20 @@ def activate(
         if not api_key or not isinstance(api_key, str) or not api_key.strip():
             raise ValidationError(
                 "api_key must be a non-empty string",
-                hint="Pass your OpenAI API key: emotionics.activate(llm='openai', api_key='...')",
+                hint=f"Pass your {llm.upper()} API key: emotionics.activate(llm={llm!r}, api_key='...')",
             )
-
-        from .providers import OpenAIProvider
-        provider = OpenAIProvider(
-            api_key=api_key,
-            base_url=kwargs.pop("base_url", None),
-            organization=kwargs.pop("organization", None),
-            project=kwargs.pop("project", None),
-        )
+        if llm == "openai":
+            from .providers import OpenAIProvider
+            provider = OpenAIProvider(
+                api_key=api_key,
+                base_url=kwargs.pop("base_url", None),
+                organization=kwargs.pop("organization", None),
+                project=kwargs.pop("project", None),
+            )
+        
+        elif llm == "gemini":
+            from .providers import GeminiProvider
+            provider = GeminiProvider(api_key=api_key)
 
         # Keep wrapper strict (to avoid silently ignored params)
         if kwargs:
@@ -115,6 +120,13 @@ def estimate(
         )
 
     if mode == "full":
-        raise EmotionicsError("mode='full' is not available in this build")
+        return analyze_full(  # 更新
+            text=text,
+            actor=actor,
+            language=language,
+            provider=cfg.provider,
+            model=cfg.model,
+            **kwargs,
+        )
 
     raise InvalidModeError(f"Unknown mode: {mode}")
