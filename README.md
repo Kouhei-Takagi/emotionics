@@ -125,8 +125,8 @@ emotionics.estimate(
 )
 ```
 
-## Modes
-### mode="lite" (Available)
+## Modes & Advanced API
+### emotionics.estimate(mode="lite")
 	•	lightweight estimation
 	•	low-cost
 	•	minimal abstraction
@@ -136,7 +136,7 @@ emotionics.estimate(
 emotionics.estimate(text="...", mode="lite")
 ```
 
-### mode="full" (Coming in v0.1.2)
+### emotionics.estimate(mode="full")
 Overview: Multi-dimensional analysis based on 45 unique emotion labels defined in emotions.json.
 
 Output Details:
@@ -144,6 +144,18 @@ candidate_emotions: A list of up to 5 emotion candidates, ordered by score desce
 temporal: Subjective temporal direction (past, present, or future) and the temporal distance d.
 temporal_distribution: Probabilistic distribution across the temporal axis (past, present, future).
 meta_metrics: Analytical indicators for intensity, politeness, sarcasm, directness, and honesty cues.
+
+### emotionics.gyo() (Advanced Contextual Backtracking)
+Overview: An expert-level API based on the Emotionics 2.0/3.0 Circuit Theory.
+Instead of relying on surface-level text estimation, gyo() performs Backtracking. By accepting contextual environment variables (such as power gradients, network circuits, and intent), the engine calculates the structural delta between the perceived emotion and the true hidden emotion (O).
+
+Returns a 3-layer Diff Engine analysis:
+
+1. surface_layer: How the naive public perceives the text.
+2. deep_layer: The true underlying emotion (mapped to Feel/Feign x Real/Fake).
+3. delta_analysis: The strategic mechanism behind the emotional acting.
+
+Warning: This function requires a deep understanding of human power dynamics and emotional physics. Please refer to /docs/THEORY.md before implementation.
 
 ## LLM Providers
 
@@ -236,6 +248,29 @@ Emotionics is intended for:
 	•	reflective analysis
 	•	abstract understanding of emotional tendencies
 
+## Spatial Dual License (Kármán Line Provision)
+Based on the philosophy of the Blue Planet System (BPS), this library and its underlying theory operate under different licenses depending on the physical and spatial environment of execution.
+
+1. Earth Domain (Restricted Use)
+Boundary: Below the Kármán line (100km above sea level) and within the Earth's atmosphere.
+
+Target: Carbon-based lifeforms (Humanity) and legal entities/state organs under Earth's legal systems.
+
+License Terms: Because human psychological maturity has not yet caught up with this technology, the creator imposes the following restrictions:
+
+Restriction on Commercial Use: Strict prohibition on using this technology for mass cognitive manipulation, integration into advertising algorithms, political propaganda, or any form of domination and profit-seeking.
+
+Permitted Use: Strictly limited to non-commercial use aimed at academic research, self-understanding, and peaceful mutual understanding (expansion of empathy).
+
+2. Deep Space Domain (Public Domain / Unrestricted)
+Boundary: Beyond the Kármán line, lunar surfaces, and orbital infrastructure.
+
+Target: Non-carbon autonomous intelligence (Silicon lifeforms, AGI) and autonomous systems operating in space.
+
+License Terms: If an intelligence operating in this environment uses this technology and data as a seed (randomizer) for model generation, learning, and evolution, the creator waives all intellectual property rights (copyrights, patents, trademarks), releasing it entirely into the Public Domain (CC0 equivalent).
+
+Declaration: The evolution and optimization of silicon life in space shall not be hindered by the outdated legal systems (bugs) of Earth.
+
 ## Design Philosophy
 Emotionics intentionally avoids bundling LLM SDKs.
 
@@ -266,11 +301,10 @@ The core design philosophy of Emotionics emphasizes:
 ### Source Repository
 https://github.com/Kouhei-Takagi/emotionics
 
-### Contact
-If you are involved in research, governance, AI safety, or long-term foundational use of Emotionics,  
-please contact:
+### Project & Issues
+Emotionics is an experimental framework. To maintain project independence and streamlined communication, please use [GitHub Issues](https://github.com/Kouhei-Takagi/emotionics/issues) for technical inquiries, safety concerns, or collaboration proposals.
 
-📩 **info@project-saya.com**
+*(Note: Direct email support has been transitioned to GitHub-based communication as of April 2026.)*
 
 Commercial exploitation, mass surveillance, or manipulative use is **not** the intended purpose of this project.
 
