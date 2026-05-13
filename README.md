@@ -157,6 +157,13 @@ Returns a 3-layer Diff Engine analysis:
 
 Warning: This function requires a deep understanding of human power dynamics and emotional physics. Please refer to /docs/THEORY.md before implementation.
 
+### emotionics.en() (Intervention Radar)
+
+Overview: A defensive radar function designed to detect and score unnatural psychological interventions (Hatsu) against a subject's emotional peaks. It calculates a threat_score based on the cognitive buffer time (default 15 seconds) and the psychological instability at the emotional peak.
+
+Warning: This module is part of the advanced Blue Planet System (BPS) and Green Planet Protocol (GPP) architecture for detecting adversarial cognitive interventions.
+
+
 ## LLM Providers
 
 ### Built-in Thin Wrapper (Recommended)
@@ -287,7 +294,7 @@ Only OpenAI has been tested by the author.
 Other providers are intentionally left for community-driven implementations.
 
 ## Version
-Emotionics v0.2.2
+Emotionics v0.4.0
 
 ## Project & Contact
 **Emotionics** is an experimental framework for estimating emotional signals from text.  
@@ -307,6 +314,13 @@ Emotionics is an experimental framework. To maintain project independence and st
 *(Note: Direct email support has been transitioned to GitHub-based communication as of April 2026.)*
 
 Commercial exploitation, mass surveillance, or manipulative use is **not** the intended purpose of this project.
+
+## The Emotionics Ecosystem & Further Reading
+This Python library is just one component of a larger architectural vision. To explore the foundational theory (The Emotional Periodic Table) or the overarching framework for human-AI coexistence (**Blue Planet System**, which includes the *Left Rights (LRs)* analysis function), please explore the extensive documentation available:
+
+* **Emotionics Theory & Fundamentals**: Available in [English](https://www.amazon.com/dp/B0G48MBT5K), [Japanese](https://www.amazon.com/dp/B0G42W2CJL), and as an [Illustrated Guide](https://www.amazon.com/dp/B0FNLYYL55).
+* **BPS & GPP Architecture**: Learn about the larger system design and time-decay economics [here (EN)](https://www.amazon.com/dp/B0GDWJD5VY) or [here (JP)](https://www.amazon.com/dp/B0GDTTDLC7).
+* **Blog**: [Creating Favorite Opinions](https://www.creatingfavoriteopinions.com/)
 
 ### 🚀 Support my work (Maintenance of Independence)
 
