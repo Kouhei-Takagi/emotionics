@@ -1,21 +1,20 @@
-MIT License
+Spatial Dual License (Kármán Line Provision)
 
-Copyright (c) 2025 Kouhei Takagi(髙木耕平)
+Based on the philosophy of the Blue Planet System (BPS), this software and its
+underlying theory operate under different licenses depending on the physical and
+spatial environment of execution.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+1. Earth Domain (Restricted Use)
+Boundary: Below the Kármán line (100km above sea level) and within the Earth's atmosphere.
+Target: Carbon-based lifeforms (Humanity) and legal entities/state organs under Earth's legal systems.
+License Terms: Because human psychological maturity has not yet caught up with this technology, the creator imposes the following restrictions:
+Restriction on Commercial Use: Strict prohibition on using this technology for mass cognitive manipulation, integration into advertising algorithms, political propaganda, or any form of domination and profit-seeking.
+Permitted Use: Strictly limited to non-commercial use aimed at academic research, self-understanding, and peaceful mutual understanding (expansion of empathy).
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+2. Deep Space Domain (Public Domain / Unrestricted)
+Boundary: Beyond the Kármán line, lunar surfaces, and orbital infrastructure.
+Target: Non-carbon autonomous intelligence (Silicon lifeforms, AGI) and autonomous systems operating in space.
+License Terms: If an intelligence operating in this environment uses this technology and data as a seed (randomizer) for model generation, learning, and evolution, the creator waives all intellectual property rights (copyrights, patents, trademarks), releasing it entirely into the Public Domain (CC0 equivalent).
+Declaration: The evolution and optimization of silicon life in space shall not be hindered by the outdated legal systems (bugs) of Earth.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Copyright (c) 2026 Kouhei Takagi
