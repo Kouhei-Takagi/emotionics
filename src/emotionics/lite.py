@@ -7,7 +7,7 @@ from typing import Any, Dict, Optional
 from .schema import LiteResult
 from .errors import ProviderResponseError
 
-VERSION = "0.2.1"
+VERSION = "0.4.0"
 
 def _clamp01(x: Any) -> float:
     try:

@@ -8,7 +8,7 @@ from typing import Any, Dict, Optional
 from .schema import FullResult
 from .errors import ProviderResponseError
 
-VERSION = "0.2.1"
+VERSION = "0.4.0"
 
 # JSONの読み込み（ライブラリ内のパスを想定）
 def _load_emotions_metadata() -> Dict[str, Any]:

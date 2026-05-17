@@ -13,6 +13,7 @@ class GeminiProvider:
     def generate(self, *, prompt: str, model: str, **kwargs: Any) -> str:
         try:
             from google import genai
+            from google.genai import types # バイナリデータ用に追加
         except Exception as e:
             raise ProviderError(
                 "Gemini provider requires the 'google-genai' package.",
@@ -22,14 +23,26 @@ class GeminiProvider:
 
         try:
             client = genai.Client(api_key=self.api_key)
-            # モデル名のデフォルトをGeminiに適したものに調整（core側が"auto"の場合）
             model_name = "gemini-3-flash-preview" if model == "auto" else model
             
-            # google-genai SDK の呼び出し方法
+            # --- ここからマルチモーダル対応 ---
+            contents = []
+            audio_bytes = kwargs.get("audio_bytes")
+            mime_type = kwargs.get("mime_type", "audio/mp3")
+            
+            if audio_bytes:
+                # 音声データがある場合はPartオブジェクトとして追加
+                contents.append(
+                    types.Part.from_bytes(data=audio_bytes, mime_type=mime_type)
+                )
+            
+            # プロンプト（テキスト指示）を追加
+            contents.append(prompt)
+            # --- ここまで ---
+
             response = client.models.generate_content(
                 model=model_name,
-                contents=prompt,
-                # kwargs を config にマッピングしたい場合は here で調整可能
+                contents=contents, # 配列を渡す
             )
             
             if not response.text:
