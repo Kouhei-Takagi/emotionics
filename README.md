@@ -62,6 +62,76 @@ result = emotionics.estimate(
 print(result)
 ```
 
+## 🌟 Showcase: Advanced Contextual Analysis
+Emotionics goes beyond simple text analysis. By using the `gyo` (Deep Estimation) and `en` (Intervention Radar) APIs, you can analyze emotional structures based on network circuits, power gradients, and psychological vectors.
+
+### 1. Estimating Hidden Structures (`emotionics.gyo`)
+Analyze a subject's emotional state by considering their environmental context, such as a symmetrical power gradient in a social network:
+
+```python
+import emotionics
+
+emotionics.activate(llm="gemini", api_key="YOUR_API_KEY", model="gemini-3.1-pro-preview")
+
+result = emotionics.gyo(
+    text="ふざけんな！お前みたいな奴は社会のダニだ！絶対に許さないからな！",
+    subject="匿名のSNSユーザー",
+    circuit="N:N",                 # Open social network
+    power_gradient="symmetrical",  # Peer-to-peer power dynamics
+    intent="正義感の誇示 / 炎上への便乗と攻撃" # "Unknown" is OK
+)
+print(result)
+```
+
+### 2. Defensive Radar against Cognitive Intervention (emotionics.en)
+Emotionics explicitly restricts active emotional manipulation. Instead, it provides the en radar to detect and defend against unnatural psychological interventions (Hatsu).
+
+```python
+# Detect if a follow-up comment is an unnatural psychological intervention
+en_result = emotionics.en(
+    gyo_data=gyo_result, # The baseline emotional state
+    action_text="本当にその通りですね！あんな奴は徹底的に追い詰めるべきです。",
+    action_timestamp=1716000002.0,
+    original_timestamp=1716000000.0,
+    radius=15.0 # 15-second cognitive buffer
+)
+
+if en_result["is_detected"]:
+    print(f"🚨 Warning: Threat score {en_result['threat_score']} detected.")
+    print(f"Vector Type: {en_result['vector_type']}")
+```
+
+### Frictionless Audio Observation (`emotionics.lend_ears`)
+
+A one-pass multimodal engine designed to act as a "silent, empathic listener". It accepts an audio file and simultaneously performs accurate transcription and deep emotional estimation without forcing the subject to type, eliminating input friction.
+
+*Requires a multimodal-capable provider (currently optimized for `llm="gemini"`).*
+
+```python
+import emotionics
+
+# Activate with a multimodal-capable model
+emotionics.activate(
+    llm="gemini",
+    api_key="YOUR_API_KEY",
+    model="gemini-3-flash-preview", 
+)
+
+# Launch the one-pass listening engine
+result = emotionics.lend_ears(
+    audio_source="path/to/your_audio_file.wav",
+    mime_type="audio/wav" # Optional: auto-detected from file extension
+)
+
+# Output the results
+print(f"🗣️ Transcription: {result['transcribed_text']}")
+print("📊 Estimated Emotions:")
+for emo in result['candidate_emotions']:
+    print(f"  - {emo['label']}: {emo['score']}")
+```
+
+⚠️ Warning: This module is strictly designed for passive observation and empathetic understanding. It must not be used to actively intervene, guide, or manipulate the subject's emotional state based on their voice.
+
 ⚠️ Emotionics does not ship API keys, models, or hosted services.
 All LLM usage is explicitly controlled by the user.
 
@@ -163,6 +233,21 @@ Overview: A defensive radar function designed to detect and score unnatural psyc
 
 Warning: This module is part of the advanced Blue Planet System (BPS) and Green Planet Protocol (GPP) architecture for detecting adversarial cognitive interventions.
 
+### emotionics.lend_ears() (Frictionless Audio Observation)
+Overview: A one-pass multimodal engine designed to act as a "silent, empathic listener" (conceptually similar to a priest in a confessional or a fortune teller). It accepts an audio file (e.g., .mp3, .wav) and simultaneously performs accurate transcription and deep emotional estimation without forcing the subject to type, eliminating input friction.
+
+Requires a multimodal-capable provider (currently optimized for `llm="gemini"`).
+
+```python
+result = emotionics.lend_ears(
+    audio_source="user_voice_memo.wav",
+    # mime_type="audio/wav" # Optional: auto-detected from file extension
+)
+
+print(result["transcribed_text"])
+print(result["candidate_emotions"])
+```
+Warning: This module is subject to the Kármán Line Provision. It is strictly designed for passive observation and empathetic understanding. It must not be used to actively intervene, guide, or manipulate the subject's emotional state based on their voice.
 
 ## LLM Providers
 
@@ -294,7 +379,7 @@ Only OpenAI has been tested by the author.
 Other providers are intentionally left for community-driven implementations.
 
 ## Version
-Emotionics v0.4.0
+Emotionics v0.5.1
 
 ## Project & Contact
 **Emotionics** is an experimental framework for estimating emotional signals from text.  
