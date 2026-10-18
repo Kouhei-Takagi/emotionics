@@ -4,11 +4,20 @@ from __future__ import annotations
 import mimetypes
 import json
 import os
+import re
 from typing import Any, Dict, Optional
 
 from .errors import ProviderResponseError, EmotionicsError
 
-VERSION = "0.5.0"
+VERSION = "0.9.0"
+
+def _extract_json(raw_text: str) -> str:
+    # ```json ... ``` または ``` ... ``` で囲まれた部分を抽出
+    match = re.search(r"```(?:json)?\s*(.*?)\s*```", raw_text, re.DOTALL)
+    if match:
+        return match.group(1).strip()
+    return raw_text.strip()  # バックティックがない場合はそのままパースを試みる
+
 
 def analyze_ears(
     audio_source: str | bytes,
@@ -79,12 +88,7 @@ IMPORTANT RULES:
 
     # 4. JSONのパース
     try:
-        clean_raw = raw.strip()
-        if clean_raw.startswith("```json"):
-            clean_raw = clean_raw[7:-3].strip()
-        elif clean_raw.startswith("```"):
-            clean_raw = clean_raw[3:-3].strip()
-        
+        clean_raw = _extract_json(raw)
         data = json.loads(clean_raw)
         
         res = {

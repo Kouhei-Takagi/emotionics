@@ -102,20 +102,31 @@ def estimate(
     mode: Mode = "lite",
     actor: Optional[str] = None,
     language: str = "auto",
+    provider: Optional[LLMProvider] = None,
+    model: Optional[str] = None,
     **kwargs: Any,
 ) -> Dict[str, Any]:
     if not isinstance(text, str) or not text.strip():
         raise EmotionicsError("text must be a non-empty string")
 
-    cfg = _require_config()
+    active_provider = provider
+    active_model = model
+    if active_provider is None:
+        cfg = _require_config()
+        active_provider = cfg.provider
+        if active_model is None:
+            active_model = cfg.model
+    else:
+        if active_model is None:
+            active_model = "auto"
 
     if mode == "lite":
         return analyze_lite(
             text=text,
             actor=actor,
             language=language,
-            provider=cfg.provider,
-            model=cfg.model,
+            provider=active_provider,
+            model=active_model,
             **kwargs,
         )
 
@@ -124,8 +135,8 @@ def estimate(
             text=text,
             actor=actor,
             language=language,
-            provider=cfg.provider,
-            model=cfg.model,
+            provider=active_provider,
+            model=active_model,
             **kwargs,
         )
 
@@ -229,4 +240,37 @@ def lend_ears(
         provider=cfg.provider,
         model=cfg.model,
         **kwargs
+    )
+
+def wave(
+    transcript_data: list[dict],
+    interval: float = 15.0,
+    mode: str = "lite",
+    **kwargs: Any,
+) -> Dict[str, Any]:
+    """
+    【Kármán Line Provision 適用モジュール】
+    時系列のテキストデータ（トランスクリプト）を感情スコアの波（Time-Series Array）として解析します。
+
+    Args:
+        transcript_data (list[dict]): [{"text": "...", "start": 0.0, "duration": 2.0}, ...] 形式のリスト。
+        interval (float): マージする時間枠（秒、デフォルト15.0秒）。
+        mode (str): estimateに渡すモード ("lite" または "full")。
+        **kwargs: analyze_wave および estimate に渡す追加引数。
+    """
+    cfg = _require_config()
+
+    # 遅延インポートで循環参照や初期ロード時間を回避
+    from .wave import analyze_wave
+    import sys
+    if "emotionics" in sys.modules:
+        sys.modules["emotionics"].wave = wave
+
+    return analyze_wave(
+        transcript_data=transcript_data,
+        interval=interval,
+        mode=mode,
+        provider=cfg.provider,
+        model=cfg.model,
+        **kwargs,
     )

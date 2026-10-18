@@ -2,13 +2,14 @@
 from __future__ import annotations
 
 import json
+import re
 from typing import Any, Dict, Optional
 
 from .schema import GyoResult
 from .errors import ProviderResponseError
 from .full import analyze_full  # 表層分析のために内部で呼び出す
 
-VERSION = "0.4.0" # パッケージバージョンに合わせて更新
+VERSION = "0.9.0" # パッケージバージョンに合わせて更新
 
 # =====================================================================
 # Emotionics 3.0 Circuit Theory & 2.0 Inversion Model Integration
@@ -36,6 +37,14 @@ VERSION = "0.4.0" # パッケージバージョンに合わせて更新
 #    - 抽象化せず、「自己防衛」「攻撃」「共感の模索」「ステータス誇示」など
 #      具体的なシチュエーションをそのまま入力します。
 # =====================================================================
+
+def _extract_json(raw_text: str) -> str:
+    # ```json ... ``` または ``` ... ``` で囲まれた部分を抽出
+    match = re.search(r"```(?:json)?\s*(.*?)\s*```", raw_text, re.DOTALL)
+    if match:
+        return match.group(1).strip()
+    return raw_text.strip()  # バックティックがない場合はそのままパースを試みる
+
 
 def analyze_gyo(
     text: str,
@@ -129,12 +138,7 @@ General public perceives this as: {surface_emotion}
     # 3. 結果のパースと結合
     try:
         # Markdownのコードブロックが含まれている場合のクリーニング
-        clean_raw = raw.strip()
-        if clean_raw.startswith("```json"):
-            clean_raw = clean_raw[7:-3].strip()
-        elif clean_raw.startswith("```"):
-            clean_raw = clean_raw[3:-3].strip()
-        
+        clean_raw = _extract_json(raw)
         deep_data = json.loads(clean_raw)
         
         res: GyoResult = {

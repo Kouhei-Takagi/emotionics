@@ -1,6 +1,6 @@
 # src/emotionics/schema.py
 from __future__ import annotations
-from typing import Literal, TypedDict, List
+from typing import Any, Dict, List, Literal, TypedDict
 
 class LiteResult(TypedDict):
     mode: Literal["lite"]
@@ -73,3 +73,17 @@ class EnResult(TypedDict):
     acceleration_at_peak: float
     vector_type: str
     multiplier_applied: float
+
+# --- Wave Result Types ---
+
+class WaveTimelineItem(TypedDict):
+    time_start: float
+    time_end: float
+    text: str
+    analysis: Dict[str, Any]
+
+class WaveResult(TypedDict):
+    mode: Literal["wave"]
+    version: str
+    interval: float
+    timeline: List[WaveTimelineItem]

@@ -2,11 +2,20 @@
 from __future__ import annotations
 
 import json
+import re
 from typing import Any, Dict, Optional
 from .schema import EnResult
 from .errors import ProviderResponseError
 
-VERSION = "0.4.0"
+VERSION = "0.9.0"
+
+def _extract_json(raw_text: str) -> str:
+    # ```json ... ``` または ``` ... ``` で囲まれた部分を抽出
+    match = re.search(r"```(?:json)?\s*(.*?)\s*```", raw_text, re.DOTALL)
+    if match:
+        return match.group(1).strip()
+    return raw_text.strip()  # バックティックがない場合はそのままパースを試みる
+
 
 def get_match_multiplier(peak_type: str, action_vector: str) -> float:
     """悪魔的相性マトリクス：極値と介入ベクトルの相性から脅威係数を返す"""
@@ -84,12 +93,7 @@ Action Text: "{action_text}"
 
     try:
         # Markdownコードブロックの除去
-        clean_raw = raw.strip()
-        if clean_raw.startswith("```json"): 
-            clean_raw = clean_raw[7:-3].strip()
-        elif clean_raw.startswith("```"): 
-            clean_raw = clean_raw[3:-3].strip()
-        
+        clean_raw = _extract_json(raw)
         llm_eval = json.loads(clean_raw)
         
         peak_type = llm_eval.get("peak_type", "LOCAL_MAXIMUM")

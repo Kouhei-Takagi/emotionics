@@ -8,7 +8,7 @@ from typing import Any, Dict, Optional
 from .schema import FullResult
 from .errors import ProviderResponseError
 
-VERSION = "0.4.0"
+VERSION = "0.9.0"
 
 # JSONの読み込み（ライブラリ内のパスを想定）
 def _load_emotions_metadata() -> Dict[str, Any]:
@@ -92,6 +92,16 @@ Text: {text}
     )
 
     raw = provider.generate(prompt=prompt, model=model, **kwargs)
+
+    # --- 修正箇所：ここから ---
+    import re
+    raw = raw.strip()
+    match = re.search(r'```(?:json)?\s*(.*?)\s*```', raw, re.DOTALL)
+    if match:
+        raw = match.group(1)
+    elif "{" in raw and "}" in raw:
+        raw = raw[raw.find("{"):raw.rfind("}")+1]
+    # --- 修正箇所：ここまで ---
 
     try:
         data = json.loads(raw)
