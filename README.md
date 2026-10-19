@@ -19,6 +19,7 @@ Emotionics is engineered to be:
 - [Quick Start](#quick-start)
   - [1. Activation](#1-activation)
   - [2. Basic Estimation (`lite` & `full`)](#2-basic-estimation-lite--full)
+- [Subjective Context Estimation](#subjective-context-estimation)
 - [Time-Series Emotion Waves (`emotionics.wave`)](#time-series-emotion-waves-emotionicswave)
   - [Concept: Time-Series Emotional Trajectory](#concept-time-series-emotional-trajectory)
   - [Parameters](#parameters)
@@ -61,9 +62,12 @@ flowchart TD
     subgraph Tier1["Tier 1: Observational Estimation"]
         T --> Lite["estimate(mode='lite')\nFast 5-axis baseline"]
         T --> Full["estimate(mode='full')\n45-element table & temporal vectors"]
+        T --> Meta["estimate(mode='meta')\nSpeaker-perceived context hypotheses"]
         TS --> Wave["wave()\nTime-series chunking + parallel estimation"]
         A --> Ears["lend_ears()\nMultimodal transcription + emotion"]
     end
+
+    Meta -. "Optional, user-reviewed hints" .-> Ctx
 
     subgraph Tier2["Tier 2: Deep Contextual Backtracking"]
         T & Ctx --> Gyo["gyo() / gyo_matrix()\nInversion Model: Feign/Feel × Real/Fake"]
@@ -140,7 +144,7 @@ print(result)
 ```json
 {
   "mode": "lite",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "trust": 0.85,
   "surprise": 0.20,
   "joy": 0.75,
@@ -165,6 +169,92 @@ print(result)
 - `temporal`: Subjective orientation (`past`, `present`, or `future`) and temporal distance `d`.
 - `temporal_distribution`: Probabilistic spread across past/present/future.
 - `meta_metrics`: Scores for `intensity`, `politeness`, `sarcasm`, `directness`, and `honesty_cues`.
+
+---
+
+## Subjective Context Estimation
+
+### `emotionics.estimate(mode="meta")` — Speaker-Perceived Context
+
+`mode="meta"` infers **hypotheses about the speaker's subjective, perceived communicative context** from a text. The speaker's perception can differ from the actual, objective situation; this mode does **not** verify real-world identities, social roles, relationships, or audience reach. It helps prepare the four context arguments used by [`emotionics.gyo()`](#deep-contextual-backtracking-emotionicsgyo).
+
+| Output field | Estimated speaker-perceived context | Values |
+| :--- | :--- | :--- |
+| `subject` | How the speaker appears to position themselves in the exchange | Short descriptive string or `null` |
+| `circuit` | How the speaker appears to perceive the intended communication topology | `"1:1"`, `"1:N"`, `"N:1"`, `"N:N"`, or `null` |
+| `power_gradient` | How the speaker appears to perceive their relative power toward the target | `"upward"`, `"downward"`, `"symmetrical"`, or `null` |
+| `intent` | The apparent communicative goal or stance expressed in the text | Short descriptive string or `null` |
+
+**Unknown is a valid result.** When the text does not support an inference, the corresponding field is JSON `null` (Python `None`), rather than a fabricated value. For example, an aggressive tone does not establish a power gradient, and use of "you" does not establish whether a message is private or public.
+
+The result also includes:
+- `perspective: "speaker_perceived"` to distinguish the target of estimation from objective social facts.
+- `uncertainty`: explanatory notes for unavailable or ambiguous fields; the reasons themselves are model-generated interpretations.
+- `gyo_kwargs`: a dictionary containing **only non-null** fields suitable for use as arguments to `gyo()` after review.
+
+#### Code Example
+
+Activate an LLM provider first, as shown in [Quick Start](#quick-start). The following example uses the already configured provider:
+
+```python
+import json
+import emotionics
+
+text = (
+    "Don't flatter yourself! People like you are completely "
+    "ruining this industry and I will never let this go!"
+)
+
+meta = emotionics.estimate(text=text, mode="meta")
+print(json.dumps(meta, ensure_ascii=False, indent=2))
+```
+
+**Example output (observed with a locally hosted Gemma model; wording varies by model and run):**
+
+```json
+{
+  "mode": "meta",
+  "version": "0.10.0",
+  "perspective": "speaker_perceived",
+  "subject": "An adversary or critic",
+  "circuit": null,
+  "power_gradient": null,
+  "intent": "Expressing strong condemnation and declaring continued opposition",
+  "uncertainty": {
+    "circuit": "It is unclear if the speaker perceives the communication as a private confrontation or a public rebuke.",
+    "power_gradient": "The hostile and confident tone does not establish the speaker's perceived hierarchical standing relative to the target."
+  },
+  "gyo_kwargs": {
+    "subject": "An adversary or critic",
+    "intent": "Expressing strong condemnation and declaring continued opposition"
+  }
+}
+```
+
+#### Passing Estimated Context to `gyo()`
+
+`gyo()` requires **all four** context values. `meta["gyo_kwargs"]` may omit unknown fields, so it cannot always be passed directly. Review the inferences and provide missing context **only if you know it or explicitly choose a scenario to test**:
+
+```python
+# Continue from the preceding example.
+gyo_context = {
+    **meta["gyo_kwargs"],
+    "circuit": "N:N",                  # Example scenario: open public network
+    "power_gradient": "symmetrical",   # Example scenario: perceived peer relationship
+}
+
+required = ("subject", "circuit", "power_gradient", "intent")
+missing = [key for key in required if not gyo_context.get(key)]
+if missing:
+    raise ValueError(f"Missing gyo context: {missing}")
+
+result = emotionics.gyo(text=text, **gyo_context)
+print(result)
+```
+
+The two supplied values in this example are **illustrative assumptions**, not deductions from the original text. There is no automatic `gyo()` call in `mode="meta"`. You can also compare different plausible power gradients using `gyo_matrix()` when appropriate.
+
+**Interpretation and limits:** All returned values are *model-generated, uncertain hypotheses* about language and possible speaker perception, **not established facts about the speaker's mind or actual environment**. A non-null value is not proof, and `null` is not necessarily a defect. Do not use these estimates as definitive profiling, psychological diagnoses, or high-stakes judgments. Results may vary across providers and models; no claim of validated inference accuracy is made.
 
 ---
 
@@ -217,7 +307,7 @@ print(wave_result)
 ```json
 {
   "mode": "wave",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "interval": 15.0,
   "timeline": [
     {
@@ -226,7 +316,7 @@ print(wave_result)
       "text": "Welcome everyone. Today we have an important announcement regarding our roadmap. We encountered critical unexpected roadblocks earlier this quarter that delayed our launch.",
       "analysis": {
         "mode": "lite",
-        "version": "0.9.0",
+        "version": "0.10.0",
         "trust": 0.72,
         "surprise": 0.35,
         "joy": 0.15,
@@ -240,7 +330,7 @@ print(wave_result)
       "text": "However, the engineering team rallied and engineered an outstanding breakthrough. I am thrilled to finally reveal our new architecture today!",
       "analysis": {
         "mode": "lite",
-        "version": "0.9.0",
+        "version": "0.10.0",
         "trust": 0.90,
         "surprise": 0.20,
         "joy": 0.88,
@@ -311,7 +401,7 @@ print(result)
 ```json
 {
   "mode": "gyo",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "surface_layer": {
     "method": "emotionics.estimate(mode='full')",
     "perceived_emotion": "Anger / Indignation",
@@ -414,7 +504,7 @@ print(radar_result)
 ```json
 {
   "mode": "en",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "threat_score": 1.4107,
   "is_detected": true,
   "time_diff_seconds": 3.5,
@@ -523,7 +613,7 @@ The project author has successfully tested this configuration with a locally ser
 ```json
 {
   "mode": "full",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "candidate_emotions": [{"label": "Relief", "score": 0.95}],
   "temporal": {"direction_t1": "present", "d": 0.15},
   "temporal_distribution": {"past": 0.15, "present": 0.85, "future": 0.0},
@@ -536,6 +626,8 @@ The project author has successfully tested this configuration with a locally ser
 ```
 
 gyo() and gyo_matrix() have also been tested with a locally hosted Gemma model using the same connection approach.
+
+The `estimate(mode="meta")` example above was also tested with a locally hosted Gemma model using this connection approach. The example demonstrates output formatting and unknown-field handling, not measured estimation accuracy.
 
 Notes:
 - Replace the model ID with the identifier exposed by your local server; it is not downloaded or installed by Emotionics.
@@ -618,7 +710,7 @@ Local LLM execution has also been tested using a Gemma model through an OpenAI-c
 Other providers can be easily integrated via the custom provider interface.
 
 ## Version
-Emotionics v0.9.0
+Emotionics v0.10.0
 
 ## Project & Contact
 **Emotionics** is an experimental framework for estimating emotional signals from text.  
@@ -645,6 +737,7 @@ This Python library is just one component of a larger architectural vision. To e
 * **Emotionics Theory & Fundamentals**: Available in [English](https://www.amazon.com/dp/B0G48MBT5K), [Japanese](https://www.amazon.com/dp/B0G42W2CJL), and as an [Illustrated Guide](https://www.amazon.com/dp/B0FNLYYL55).
 * **BPS & GPP Architecture**: Learn about the larger system design and time-decay economics [here (EN)](https://www.amazon.com/dp/B0GDWJD5VY) or [here (JP)](https://www.amazon.com/dp/B0GDTTDLC7).
 * **Blog**: [Creating Favorite Opinions](https://www.creatingfavoriteopinions.com/)
+* **MarkDown and PDF**: [Books](https://github.com/Kouhei-Takagi/Books)
 
 ### 🚀 Support my work (Maintenance of Independence)
 I am dedicated to building tools that solve fundamental problems for humanity and the planet's future. 

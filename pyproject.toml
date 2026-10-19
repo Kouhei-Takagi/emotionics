@@ -1,16 +1,16 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
+requires = ["setuptools>=77.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "emotionics"
-version = "0.9.0"
+version = "0.10.1"
 description = "Emotionics API (Python library)"
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "Spatial Dual License (See README.md)" }
+license = "LicenseRef-Spatial-Dual-License-Earth OR CC0-1.0"
 authors = [
-    { name = "Kouhei Takagi"}
+    { name = "Kouhei Takagi(高木耕平)"}
 ]
 dependencies = []
 keywords = ["affective-computing", "emotional-logic", "agi-safety", "emotion-math", "emotionics"]
@@ -20,7 +20,6 @@ classifiers = [
     "Intended Audience :: Science/Research",
     "Intended Audience :: Developers",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
-    "License :: Other/Proprietary License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
@@ -32,7 +31,7 @@ openai = ["openai>=1.0.0"]
 gemini = ["google-genai>=0.1.0"]
 
 [project.urls]
-Homepage = "https://github.com/Kouhei-Takagi/emotionics"
+Homepage = "https://www.creatingfavoriteopinions.com"
 Documentation = "https://github.com/Kouhei-Takagi/emotionics#readme"
 Source = "https://github.com/Kouhei-Takagi/emotionics"
 Issues = "https://github.com/Kouhei-Takagi/emotionics/issues"
