@@ -76,7 +76,7 @@ class InvalidModeError(EmotionicsError):
     default_message = "Invalid mode."
 
     def __init__(self, mode: Optional[str] = None, *, allowed: Optional[list[str]] = None, **kwargs: Any) -> None:
-        allowed = allowed or ["lite", "full"]
+        allowed = ["lite", "full", "meta"] if allowed is None else allowed
         msg = self.default_message if mode is None else f"Unknown mode: {mode}"
         super().__init__(
             msg,

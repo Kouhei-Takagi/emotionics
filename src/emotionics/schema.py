@@ -38,6 +38,26 @@ class FullResult(TypedDict):
     directness: float
     honesty_cues: float
 
+# --- Meta Result Types ---
+
+class MetaGyoKwargs(TypedDict, total=False):
+    """Only the inferred, non-null context fields to pass into gyo()."""
+    subject: str
+    circuit: Literal["1:1", "1:N", "N:1", "N:N"]
+    power_gradient: Literal["symmetrical", "upward", "downward"]
+    intent: str
+
+class MetaResult(TypedDict):
+    """Hypotheses about the speaker's *perceived* communicative context."""
+    mode: Literal["meta"]
+    version: str
+    perspective: Literal["speaker_perceived"]
+    subject: str | None
+    circuit: Literal["1:1", "1:N", "N:1", "N:N"] | None
+    power_gradient: Literal["symmetrical", "upward", "downward"] | None
+    intent: str | None
+    uncertainty: Dict[str, str]
+    gyo_kwargs: MetaGyoKwargs
 
 # --- Gyo Result Types ---
 

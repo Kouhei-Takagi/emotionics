@@ -6,8 +6,9 @@ from typing import Any, Dict, Literal, Optional, Protocol
 from .errors import EmotionicsError, NotActivatedError, InvalidModeError,  ValidationError
 from .lite import analyze_lite
 from .full import analyze_full
+from .meta import analyze_meta
 
-Mode = Literal["lite", "full"]
+Mode = Literal["lite", "full", "meta"]
 LLMName = Literal["openai", "gemini"]  # for now
 
 class LLMProvider(Protocol):
@@ -140,7 +141,17 @@ def estimate(
             **kwargs,
         )
 
-    raise InvalidModeError(f"Unknown mode: {mode}")
+    if mode == "meta":
+        return analyze_meta(
+            text=text,
+            actor=actor,
+            language=language,
+            provider=active_provider,
+            model=active_model,
+            **kwargs,
+        )
+
+    raise InvalidModeError(mode)
 
 
 def gyo(
